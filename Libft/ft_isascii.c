@@ -6,11 +6,11 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:39:43 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/12 19:55:43 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:21:54 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-ft_isascii(int chr)
+int	ft_isascii(int chr)
 {
-    return (chr >= 0 && chr <= 127);
+	return (chr >= 0 && chr <= 127);
 }

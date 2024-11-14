@@ -6,15 +6,15 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:53 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/10/16 14:31:13 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:51:35 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] && s2[i] && i < n)

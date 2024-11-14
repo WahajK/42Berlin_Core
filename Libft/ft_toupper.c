@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muhakhan <muhakhan@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:45:32 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/10/10 16:21:44 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:19:44 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 
-char	*ft_strlowcase(char *str)
+int	ft_toupper(int ch)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-		{
-			str[i] += 32;
-		}
-		i++;
-	}
-	return (str);
+	if (ch >= 'a' && ch <= 'z')
+		return (ch - 32);
+	return (ch);
 }
-/*
-int	main(void)
-{
-	char arr[] = "MEOW";
-	printf("%s", ft_strlowcase(arr));
-}*/
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	printf("%c",ft_toupper(-1));
+// }

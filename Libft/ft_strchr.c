@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:21:01 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/14 18:43:04 by muhakhan         ###   ########.fr       */
+/*   Created: 2024/11/14 17:27:07 by muhakhan          #+#    #+#             */
+/*   Updated: 2024/11/14 17:41:47 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
+#include <stddef.h>
 
-int	ft_atoi(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	result;
-	int	sign;
+	int	i;
 
-	result = 0;
-	sign = 1;
-	while (*str == ' ')
-		str++;
-	if (*str == '-')
+	i = 0;
+	while (s[i])
 	{
-		str++;
-		sign = -1;
+		if (s[i] == c)
+			return ((char *) &s[i]);
+		i++;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	return (result * sign);
+	if (c == '\0')
+		return ((char *) &s[i]);
+	return (NULL);
 }
+// #include <stdio.h>
+// int	main()
+// {
+// 	printf("%s", ft_strchr("My name is Meow", 'n'));
+// }
