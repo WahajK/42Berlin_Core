@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:21:01 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/21 16:27:39 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:20:59 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	ft_atoi(char *str)
 
 	result = 0;
 	sign = 1;
-	while (*str == ' ' || 
-		*str == '\t' || 
-		*str == '\n' || 
-		*str == '\v' || 
-		*str == '\f' || 
-		*str == '\r')
+	while (*str == ' '
+		|| *str == '\t'
+		|| *str == '\n'
+		|| *str == '\v'
+		|| *str == '\f'
+		|| *str == '\r')
 		str++;
 	if (*str == '-')
 	{

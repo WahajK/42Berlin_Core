@@ -6,41 +6,40 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:24:21 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/14 17:26:14 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:58:05 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
+#include "libft.h"
 
-// int	ft_strlen(char *str)
-// {
-// 	int	i;
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	j;
 
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j])
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
-// char	*ft_strjoin(int size, char **strs, char *sep)
-// {
-// 	char	*str;
-// 	int		i;
-// 	int		j;
-// 	int		len;
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ptr;
 
-// 	len = 0;
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		len += ft_strlen(strs[i++]);
-// 	}
-// 	// printf("%d", len);
-// 	return (str);
-// }
+	ptr = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 
-// int	main()
-// {
-// 	char *strs[] = {"Wahaj", "Meow", "Melly", NULL};
-// 	printf("%s",ft_strjoin(3, strs, ", "));
-// }
+}
+
+int	main()
+{
+	printf("%s",ft_strjoin("abc", "xyz"));
+}
