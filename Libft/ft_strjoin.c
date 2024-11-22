@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
 	int	i;
 	int	j;
@@ -36,10 +36,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*ptr;
 
 	ptr = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-
-}
-
-int	main()
-{
-	printf("%s",ft_strjoin("abc", "xyz"));
+	ft_strcat(ptr, s1);
+	ft_strcat(ptr, s2);
+	return (ptr);
 }
