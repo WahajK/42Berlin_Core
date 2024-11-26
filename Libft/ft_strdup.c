@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:58:33 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/21 19:07:58 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:31:22 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strdup(const char *s)
 	if (*(char *)s == '\0')
 	{
 		ptr = malloc(1);
+		if (!ptr)
+			return (NULL);
 		ptr[0] = '\0';
 		return (ptr);
 	}

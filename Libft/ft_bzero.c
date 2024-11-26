@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:51:58 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/21 17:54:21 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:34:48 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	ft_bzero(void *s, size_t n)
 
 	i = 0;
 	while (i < n)
-		*(char *)(s + (i++)) = '\0';
+		*(unsigned char *)(s + (i++)) = 0;
 }
