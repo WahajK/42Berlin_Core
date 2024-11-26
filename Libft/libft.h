@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:53:33 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/21 19:46:15 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/26 01:29:15 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <string.h>
 
 int		ft_isalpha(int c);
