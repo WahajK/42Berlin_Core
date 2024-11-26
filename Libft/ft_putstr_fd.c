@@ -6,13 +6,11 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 01:27:39 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/26 01:33:13 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/26 01:38:21 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *s);
 
 void	ft_putstr_fd(char *s, int fd)
 {
