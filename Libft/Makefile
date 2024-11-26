@@ -6,7 +6,7 @@
 #    By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 21:19:28 by muhakhan          #+#    #+#              #
-#    Updated: 2024/11/26 20:25:09 by muhakhan         ###   ########.fr        #
+#    Updated: 2024/11/26 22:04:37 by muhakhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
 	ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_tolower.c \
 	ft_toupper.c ft_memchr.c ft_memcmp.c ft_strdup.c \
 	ft_substr.c ft_calloc.c ft_putstr_fd.c ft_putendl_fd.c \
-	ft_putchar_fd.c \
+	ft_putchar_fd.c ft_putnbr_fd.c
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
