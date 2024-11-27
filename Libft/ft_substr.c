@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:08:31 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/26 21:59:32 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/28 00:35:20 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		ptr = malloc(1);
 		if (!ptr)
 			return (NULL);
-		ptr[0] = '\0';
+		ptr[0] = 0;
 	}
 	else
 	{

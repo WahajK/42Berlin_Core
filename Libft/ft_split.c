@@ -6,115 +6,70 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:06:25 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/27 00:50:14 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/11/28 00:53:32 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strncpy(char *dest, const char *src, size_t n)
+static size_t	count_words(char const *s, char c)
 {
-	size_t	i;
+	size_t	count;
 
-	i = 0;
-	while (src[i] != '\0' && i < n - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
-
-static char	*ft_strndup(const char *s, size_t n)
-{
-	char	*ptr;
-
-	ptr = malloc(n + 1);
-	if (!ptr)
-		return (NULL);
-	ft_strncpy(ptr, s, n + 1);
-	return (ptr);
-}
-
-static int	count_words(char const *s, char c)
-{
-	int	count;
-	int	i;
-
-	i = 0;
 	count = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == c)
-			while(s[i] == c)
-				i++;
-		count++;
-		i++;
+		if (*s != c)
+		{
+			count++;
+			while (*s && *s != c)
+				s++;
+		}
+		else
+			s++;
 	}
 	return (count);
 }
 
-static const char	*skip_delimeter(char const *s, char c)
+char	**destructor(char **arr, int i)
 {
-	while (*s == c)
-		s++;
-	return s;
+	while (i >= 0)
+		free(arr[i--]);
+	free(arr);
+	return (NULL);
 }
 
-static	int	count_till_delimeter(char const *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != c)
-		i++;
-	return (i);
-}
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
-	int		words;
-	int		word_len;
-	int		i;
-	int		j;
-	int		flag;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	words = count_words(s, c);
-	ptr = (char **) malloc(words * sizeof(char *));
-	printf("%d\n ", words);
-	printf("BTE\n");
+	ptr = (char **) malloc(sizeof(char *) * count_words(s, c) + 1);
 	if (!ptr)
 		return (NULL);
-	while (s[j] != '\0')
+	while (*s)
 	{
-		printf("HI\n");
-		if (*s == c)
-			s = skip_delimeter(s, c);
-		else
+		if (*s != c)
 		{
-			word_len = count_till_delimeter(s, c);
-			ptr[i] = ft_strndup(s, word_len);
-			s += word_len;
+			len = 0;
+			while (*s && *s != c && ++len)
+				s++;
+			ptr[i++] = ft_substr(s - len, 0, len);
+			if (!ptr[i - 1])
+				return (destructor(ptr, i - 1));
 		}
-		i++;
-		j++;
-		s++;
+		else
+			s++;
 	}
+	ptr[i] = NULL;
 	return (ptr);
 }
 
-int	main()
-{
-	char str[17] = "My name is Meow";
-	char **arr = ft_split(str, ' ');
-	for (int i = 0; i < 5; i++)
-	{
-		printf("%s\n", arr[i]);
-	}
-}
+// int	main()
+// {
+// 	char **arr = ft_split("", 'z');
+// 	if(!arr[0])
+// 		printf("TEST");
+// }
