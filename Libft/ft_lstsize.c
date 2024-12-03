@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 01:26:39 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/03 20:08:16 by muhakhan         ###   ########.fr       */
+/*   Created: 2024/12/03 19:26:50 by muhakhan          #+#    #+#             */
+/*   Updated: 2024/12/03 20:06:32 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * ft_putendl_fd - Outputs the string 's' to the given file descriptor
- * followed by a newline.
- * @s: The string to output.
- * @fd: The file descriptor on which to write.
+ * @file ft_lstsize.c
+ * @brief Counts the number of elements in a linked list.
+ *
+ * This function iterates through a linked list and counts the number of
+ * elements present in the list.
+ *
+ * @param lst A pointer to the first element of the linked list.
+ * @return The number of elements in the linked list.
  */
-void	ft_putendl_fd(char *s, int fd)
+int	ft_lstsize(t_list *lst)
 {
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	int	ret;
+
+	ret = 0;
+	while (lst && ++ret)
+		lst = lst->next;
+	return (ret);
 }

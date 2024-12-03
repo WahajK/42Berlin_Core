@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 01:24:53 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/03 20:08:05 by muhakhan         ###   ########.fr       */
+/*   Created: 2024/12/03 19:28:21 by muhakhan          #+#    #+#             */
+/*   Updated: 2024/12/03 20:06:14 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @file ft_putchar_fd.c
- * @brief Outputs the character 'c' to the given file descriptor.
+ * @file ft_lstlast.c
+ * @brief Returns the last element of the list.
  *
- * This function writes the character 'c' to the file descriptor specified
- * by 'fd'. It uses the write system call to perform the output operation.
+ * This function traverses the linked list until it reaches the last element
+ * and returns a pointer to it. If the list is empty, it returns NULL.
  *
- * @param c The character to output.
- * @param fd The file descriptor on which to write.
+ * @param lst The beginning of the list.
+ * @return The last element of the list, or NULL if the list is empty.
  */
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstlast(t_list *lst)
 {
-	write(fd, &c, 1);
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

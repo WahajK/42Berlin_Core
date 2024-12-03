@@ -6,12 +6,21 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:30:55 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/11/26 20:36:00 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:03:28 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * ft_calloc - Allocates memory for an array of 'count' elements of 'size' 
+ *             bytes each and initializes all bytes in the allocated memory 
+ *             to zero.
+ * @count: Number of elements to allocate.
+ * @size: Size of each element.
+ *
+ * Return: A pointer to the allocated memory, or NULL if the allocation fails.
+ */
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
