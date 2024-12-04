@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:06:25 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/03 20:09:25 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:11:42 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @param i The index from which to start freeing the strings.
  * @return Always returns NULL.
  */
-char	**destructor(char **arr, int i)
+static char	**destructor(char **arr, int i)
 {
 	while (i >= 0)
 		free(arr[i--]);
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	size_t	len;
 
 	i = 0;
-	ptr = (char **) malloc(sizeof(char *) * count_words(s, c) + 1);
+	ptr = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!ptr)
 		return (NULL);
 	while (*s)

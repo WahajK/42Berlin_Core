@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 19:24:55 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/03 20:06:23 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:31:17 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ t_list	*ft_lstnew(void *content)
 	if (!ret)
 		return (0);
 	ret->content = content;
-	ret->next = 0;
+	ret->next = NULL;
 	return (ret);
 }

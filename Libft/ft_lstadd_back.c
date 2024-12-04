@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 19:28:55 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/03 20:05:04 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:15:32 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@
  */
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*tmp;
+	t_list	*temp;
 
-	tmp = ft_lstlast(*lst);
-	if (!tmp)
+	if (*lst == NULL)
 		*lst = new;
 	else
-		tmp->next = new;
+	{
+		temp = *lst;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
 }

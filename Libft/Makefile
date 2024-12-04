@@ -9,12 +9,12 @@ SRCS = \
 	ft_toupper.c ft_memchr.c ft_memcmp.c ft_strdup.c \
 	ft_substr.c ft_calloc.c ft_putstr_fd.c ft_putendl_fd.c \
 	ft_putchar_fd.c ft_putnbr_fd.c ft_split.c ft_striteri.c \
-	ft_strmapi.c
+	ft_strmapi.c ft_itoa.c 
 
 BONUSSRCS = \
 	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstdelone.c ft_lstlast.c ft_lstnew.c \
-	ft_lstsize.c
+	ft_lstsize.c ft_lstmap.c ft_lstiter.c
 
 OBJ = $(SRCS:.c=.o)
 BOBJECTS = $(BONUSSRCS:.c=.o)
@@ -26,7 +26,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) -r $@ $?
 
-bonus: $(OBJECTS) $(BOBJECTS)
+bonus: $(NAME) $(BOBJECTS)
 	$(AR) -r $(NAME) $?
 
 clean:
