@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:43:21 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/05 20:46:36 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:07:41 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int ft_printf(const char *format, ...)
 	int count = 0;
 	char *str;
 	int num;
+	char ch;
+	unsigned int unum;
 
 	va_start(args, format);
 	while (format[i])
@@ -78,8 +80,8 @@ int ft_printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				num = va_arg(args, int);
-				ft_putchar_fd(num, 1);
+				ch = va_arg(args, int);
+				ft_putchar_fd(ch, 1);
 				count++;
 			}
 			else if (format[i] == 's')
@@ -105,8 +107,8 @@ int ft_printf(const char *format, ...)
 			}
 			else if (format[i] == 'u')
 			{
-				num = va_arg(args, unsigned int);
-				ft_putnbr_fd(num, 1);
+				unum = va_arg(args, unsigned int);
+				ft_putnbr_fd(unum, 1);
 			}
 			else if (format[i] == 'x')
 			{
@@ -141,16 +143,17 @@ int main(void)
 {
 	// ft_printf("Hello, %s! You have %d new messages.\n", "Alice", 5);
 	int i;
-	printf("Char = %c\n", 'a');
-	printf("Str = %s\n", "Hello");
-	printf("Int = %d\n", 42);
-	printf("Hex = %x\n", 42);
-	printf("Pointer = %p\n", &i);
-	printf("Unsigned = %u\n", 42);
+	ft_printf("Char = %c\n", 'a');
+	ft_printf("Str = %s\n", "Hello");
+	ft_printf("Int = %d\n", 42);
+	ft_printf("Hex = %x\n", 42);
+	ft_printf("Pointer = %p\n", &i);
+	printf("OG Pointer: %p\n", &i);
+	ft_printf("Unsigned = %u\n", 42);
 	printf("Percent = %%\n");
-	printf("Int = %i\n", 42);
-	printf("Cap Hex = %X\n", -42);
-	printf("Neg ul = %u\n", -42);
+	ft_printf("Int = %i\n", 42);
+	ft_printf("Cap Hex = %X\n", -42); //Need to be changed to unsigned
+	ft_printf("Neg ul = %u\n", -42);
 	printf("Int = %X\n", 4294967254);
 	return 0;
 }
