@@ -1,8 +1,6 @@
 NAME = libft.a
 
-SRCS = \
-	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
-	ft_strlen.c
+SRCS = ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c
 
 OBJ = $(SRCS:.c=.o)
 CC = cc
@@ -14,7 +12,7 @@ $(NAME): $(OBJ)
 	$(AR) -r $@ $?
 
 clean:
-	rm -f $(OBJ) $(BOBJECTS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 22:03:31 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/06 17:06:32 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:37:06 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 void	ft_putnbr_fd(size_t n, size_t fd)
 {
 	char	arr[30];
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	if (n < 0)

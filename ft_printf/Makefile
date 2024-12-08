@@ -1,18 +1,31 @@
-CC = cc
-CFLAG = -Wall -Wextra -Werror
 NAME = libftprintf.a
-SOURCES = ft_printf.c 
+SOURCES = ft_printf.c
 OBJECTS = $(SOURCES:.c=.o)
-LIBFT = libft.a
-LIBFT_DIR = libft
-LIBFT_LIB = $(LIBFT_DIR)/$(LIBFT)
-LIBFT_MAKE = make -C $(LIBFT_DIR) # -C flag is used to change directory to LIBFT_DIR
-LIBFT_CLEAN = make clean -C $(LIBFT_DIR)
-LIBFT_FCLEAN = make fclean -C $(LIBFT_DIR)
+LIBFT_OBJECTS = libft/*.o
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	$(LIBFT_MAKE)
-	cp $(LIBFT_LIB) $(NAME)
-	ar rcs $(NAME) $(OBJECTS)
+bonus: $(NAME)
+
+$(NAME): $(OBJECTS) libft
+	$(AR) -r $@ $(OBJECTS) $(LIBFT_OBJECTS)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $?
+
+libft:
+	make -C libft
+
+clean:
+	rm -f $(OBJECTS)
+	make -C libft clean
+
+fclean: clean
+	rm -f $(NAME) libft/libft.a
+
+re: fclean all
+
+.PHONY: all bonus libft clean fclean re

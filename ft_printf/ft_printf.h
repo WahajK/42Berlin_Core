@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:44:54 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/05 18:54:22 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:35:47 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,12 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+
+typedef struct s_vars
+{
+	int	i;
+	char	*s;
+	unsigned int	u;
+	void	*p;
+}
 #endif

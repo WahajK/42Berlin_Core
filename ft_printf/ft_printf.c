@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:43:21 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/06 17:08:34 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:36:09 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,6 @@ int main(void)
 	ft_printf("Int = %i\n", 42);
 	ft_printf("Cap Hex = %X\n", -42); //Need to be changed to unsigned
 	ft_printf("Neg ul = %u\n", -42);
-	printf("Int = %X\n", 4294967254);
+	printf("Int = %X\n", 967254);
 	return 0;
 }
