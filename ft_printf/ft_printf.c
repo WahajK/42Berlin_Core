@@ -6,72 +6,55 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:43:21 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/09 00:36:09 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:18:16 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include "stdio.h"
 
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	int		base_len;
 	char	result[33];
-	int		i;
-	int		count;
-	long	number;
+	unsigned	number;
+	int			i;
+	int			count;
 
-	base_len = ft_strlen(base);
 	count = 0;
 	number = nbr;
-	if (number < 0)
-	{
-		write(1, "-", 1);
-		number = -number;
-		count++;
-	}
 	i = 0;
 	if (number == 0)
 	{
 		write(1, &base[0], 1);
 		count++;
 	}
-	while (number > 0 && count++)
+	while (number > 0 && ++count)
 	{
-		result[i++] = base[number % base_len];
-		number = number / base_len;
+		result[i++] = base[number % 16];
+		number = number / 16;
 	}
 	while (--i >= 0)
 		write(1, &result[i], 1);
 	return (count);
 }
 
-void	print_address(unsigned long addr)
+int	print_address(unsigned long addr)
 {
-	int		i;
-	char	address[16];
-
-	i = 15;
-	while (i >= 0)
-	{
-		address[i] = "0123456789abcdef"[addr % 16];
-		addr /= 16;
-		i--;
-	}
-	write(1, address, 16);
-	write(1, ": ", 2);
+	if(!addr)
+		return (write(1, "(nil)", 5));
+	write(1, "0x", 2);
+	return(ft_putnbr_base(addr, "0123456789abcdef") + 2);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int i = 0;
-	int count = 0;
-	char *str;
-	int num;
-	char ch;
-	unsigned int unum;
+	va_list	args;
+	int	i;
+	int	count;
 
+	i = 0;
+	count = 0;
 	va_start(args, format);
 	while (format[i])
 	{
@@ -79,47 +62,21 @@ int ft_printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 'c')
-			{
-				ch = va_arg(args, int);
-				ft_putchar_fd(ch, 1);
-				count++;
-			}
+				count += ft_putchar_fd(va_arg(args, int), 1);
 			else if (format[i] == 's')
-			{
-				str = va_arg(args, char *);
-				ft_putstr_fd(str, 1);
-				count += ft_strlen(str);
-			}
+				count += ft_putstr_fd(va_arg(args, char *), 1);
 			else if (format[i] == 'p')
-			{
-				print_address(va_arg(args, unsigned long)); // Need work
-				count += 16;
-			}
+				count += print_address(va_arg(args, unsigned long));
 			else if (format[i] == 'd')
-			{
-				num = va_arg(args, int);
-				ft_putnbr_fd(num, 1);
-			}
+				count += ft_putnbr_fd(va_arg(args, int), 1);
 			else if (format[i] == 'i')
-			{
-				num = va_arg(args, int);
-				ft_putnbr_fd(num, 1);
-			}
+				count += ft_putnbr_fd(va_arg(args, int), 1);
 			else if (format[i] == 'u')
-			{
-				unum = va_arg(args, unsigned int);
-				ft_putnbr_fd(unum, 1);
-			}
+				count += ft_putnbr_fd(va_arg(args, unsigned int), 1);
 			else if (format[i] == 'x')
-			{
-				num = va_arg(args, unsigned int);
-				count += ft_putnbr_base(num, "0123456789abcdef");
-			}
+				count += ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
 			else if (format[i] == 'X')
-			{
-				num = va_arg(args, unsigned int);
-				count += ft_putnbr_base(num, "0123456789ABCDEF");
-			}
+				count += ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
 			else if (format[i] == '%')
 			{
 				write(1, "%", 1);
@@ -137,23 +94,36 @@ int ft_printf(const char *format, ...)
 	return (count);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	// ft_printf("Hello, %s! You have %d new messages.\n", "Alice", 5);
-	int i;
-	ft_printf("Char = %c\n", 'a');
-	ft_printf("Str = %s\n", "Hello");
-	ft_printf("Int = %d\n", 42);
-	ft_printf("Hex = %x\n", 42);
-	ft_printf("Pointer = %p\n", &i);
-	printf("OG Pointer: %p\n", &i);
-	ft_printf("Unsigned = %u\n", 42);
-	printf("Percent = %%\n");
-	ft_printf("Int = %i\n", 42);
-	ft_printf("Cap Hex = %X\n", -42); //Need to be changed to unsigned
-	ft_printf("Neg ul = %u\n", -42);
-	printf("Int = %X\n", 967254);
-	return 0;
-}
+// int main(void)
+// {
+// 	// ft_printf("Hello, %s! You have %d new messages.\n", "Alice", 5);
+// 	int i;
+// 	ft_printf("Char = %c | Str = %s | Int = %d | Smol Hex = %x | Biq Hex = %X | Pointer = %p | Unsigned = %u\n", 'a', "Meow", -42, 42, -42, -1, -42);
+// 	printf("Char = %c | Str = %s | Int = %d | Smol Hex = %x | Biq Hex = %X | Pointer = %p | Unsigned = %u\n", 'a', "Meow", -42, 42, -42, -1, -42);
+// 	printf(" NULL %p NULL \n", NULL);
+// 	ft_printf(" NULL %p NULL ", NULL);
+// 	// ft_printf("Char = %c\n", 'a');
+// 	// printf("OG Char = %c\n", 'a');
+// 	// ft_printf("Str = %s\n", "Hello");
+// 	// printf("OG Str = %s\n", "Hello");
+// 	// ft_printf("Int = %d\n", 42);
+// 	// printf("OG Int = %d\n", 42);
+// 	// ft_printf("Hex = %x\n", 42);
+// 	// printf("OG Hex = %x\n", 42);
+// 	// ft_printf("Pointer = %p\n", &i);
+// 	// printf("OG Pointer: %p\n", &i);
+// 	// ft_printf("Unsigned = %u\n", 42);
+// 	// printf("OG Unsigned = %u\n", 42);
+// 	// ft_printf("Percent = %%\n");
+// 	// printf("OG Percent = %%\n");
+// 	// ft_printf("Int = %i\n", 42);
+// 	// printf("OG Int = %i\n", 42);
+// 	// ft_printf("Cap Hex = %X\n", -42); //Need to be changed to unsigned
+// 	// printf("OG Cap Hex = %X\n", -42);
+// 	// ft_printf("Neg ul = %u\n", -42);
+// 	// printf("OG Neg ul = %u\n", -42);
+// 	// printf("HEX = %X\n", 967254);
+// 	return 0;
+// }

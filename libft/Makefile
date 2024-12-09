@@ -24,10 +24,10 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) -r $@ $?
+	$(AR) rcs $@ $?
 
 bonus: $(NAME) $(BOBJECTS)
-	$(AR) -r $(NAME) $?
+	$(AR) rcs $(NAME) $?
 
 clean:
 	rm -f $(OBJ) $(BOBJECTS)
@@ -35,6 +35,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean clean all
 
 .PHONY: all bonus clean fclean re
