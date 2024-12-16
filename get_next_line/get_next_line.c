@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:41:41 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/16 02:39:23 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/16 02:43:02 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-static char	*set_line(int fd, char *buffer, char **line)
+static void	set_line(int fd, char *buffer, char **line)
 {
 	int		i;
 	char	*temp;
