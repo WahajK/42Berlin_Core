@@ -6,7 +6,7 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:41:41 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/16 02:33:22 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/16 02:39:23 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  *
  * Return: The new string. NULL if the allocation fails.
  */
-char	*ft_strjoin(char const *s1, char const *s2)
+static char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*ptr;
 	int		i;
@@ -46,11 +46,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-char	*set_line(int fd, char *buffer, char **line)
+static char	*set_line(int fd, char *buffer, char **line)
 {
 	int		i;
 	char	*temp;
-	if(!*line || !ft_strchr(*line, '\n'))
+
+	if (!*line || !ft_strchr(*line, '\n'))
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		while (i > 0)
@@ -72,7 +73,7 @@ char	*set_line(int fd, char *buffer, char **line)
 	free(buffer);
 }
 
-char	*get_line(char **line)
+static char	*get_line(char **line)
 {
 	int		i;
 	int		j;
@@ -99,7 +100,7 @@ char	*get_line(char **line)
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
+	char		*buffer;
 	static char	*line;
 
 	buffer = malloc(BUFFER_SIZE + 1);
