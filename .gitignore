@@ -3,3 +3,4 @@
 *.o
 ft_printf/printfTester
 ft_printf/test.c
+get_next_line/test.txt
