@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:41:41 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/20 17:48:11 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:23:23 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	set_line(int fd, char *buffer, char **line)
 	int		i;
 	char	*temp;
 
-	if (!*line || !ft_strchr(*line, '\n'))
+	if (!line[fd] || !ft_strchr(line[fd], '\n'))
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i <= 0)
@@ -72,15 +72,15 @@ static void	set_line(int fd, char *buffer, char **line)
 		while (i > 0)
 		{
 			buffer[i] = '\0';
-			if (!*line)
-				*line = ft_substr(buffer, 0, i);
+			if (!line[fd])
+				line[fd] = ft_substr(buffer, 0, i);
 			else
 			{
-				temp = *line;
-				*line = ft_strjoin(*line, buffer);
+				temp = line[fd];
+				line[fd] = ft_strjoin(line[fd], buffer);
 				free(temp);
 			}
-			if (ft_strchr(*line, '\n'))
+			if (ft_strchr(line[fd], '\n'))
 				break ;
 			i = read(fd, buffer, BUFFER_SIZE);
 		}
@@ -100,27 +100,27 @@ static void	set_line(int fd, char *buffer, char **line)
  *
  * Return: A pointer to the extracted line, or NULL if the input string is NULL.
  */
-static char	*get_line(char **line)
+static char	*get_line(int fd, char **line)
 {
 	int		i;
 	int		j;
 	char	*ret;
 	char	*temp;
 
-	if (!*line)
+	if (!line[fd])
 		return (0);
-	if (!ft_strchr(*line, '\n'))
+	if (!ft_strchr(line[fd], '\n'))
 	{
-		ret = ft_substr(*line, 0, ft_strlen(*line));
-		free (*line);
-		*line = 0;
+		ret = ft_substr(line[fd], 0, ft_strlen(line[fd]));
+		free (line[fd]);
+		line[fd] = 0;
 		return (ret);
 	}
-	i = ft_strlen(*line);
-	j = ft_strlen(ft_strchr(*line, '\n'));
-	ret = ft_substr(*line, 0, i - j + 1);
-	temp = *line;
-	*line = ft_substr(ft_strchr(*line, '\n'), 1, j - 1);
+	i = ft_strlen(line[fd]);
+	j = ft_strlen(ft_strchr(line[fd], '\n'));
+	ret = ft_substr(line[fd], 0, i - j + 1);
+	temp = line[fd];
+	line[fd] = ft_substr(ft_strchr(line[fd], '\n'), 1, j - 1);
 	free(temp);
 	return (ret);
 }
@@ -140,7 +140,7 @@ static char	*get_line(char **line)
 char	*get_next_line(int fd)
 {
 	char		*buffer;
-	static char	*line;
+	static char	*line[OPEN_MAX];
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
@@ -150,8 +150,8 @@ char	*get_next_line(int fd)
 		free(buffer);
 		return (0);
 	}
-	set_line(fd, buffer, &line);
-	return (get_line(&line));
+	set_line(fd, buffer, line);
+	return (get_line(fd, line));
 }
 // #include <stdio.h>
 // #include <fcntl.h>

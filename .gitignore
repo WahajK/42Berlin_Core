@@ -4,3 +4,5 @@
 ft_printf/printfTester
 ft_printf/test.c
 get_next_line/test.txt
+get_next_line/write.c
+get_next_line/output.txt
