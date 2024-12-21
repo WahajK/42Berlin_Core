@@ -6,11 +6,11 @@
 /*   By: muhakhan <muhakhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 18:41:41 by muhakhan          #+#    #+#             */
-/*   Updated: 2024/12/20 17:48:11 by muhakhan         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:24:41 by muhakhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 /**
  * ft_strjoin - Allocates and returns a new string, which is the result of 
