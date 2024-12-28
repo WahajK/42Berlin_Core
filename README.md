@@ -1,1 +1,1 @@
-#This is an unmanaged repository, please refer to individual repositories of each project for clean code
+# This is an unmanaged repository, please refer to individual project repositories which can be found on my homepage
